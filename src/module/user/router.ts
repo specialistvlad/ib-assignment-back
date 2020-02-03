@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { defaultRouterOptions, define404 } from '../base/router';
+import { defaultRouterOptions, define404 } from '../../core/router';
 import { create as createUser } from './controller';
 
 export const router = Router(defaultRouterOptions);

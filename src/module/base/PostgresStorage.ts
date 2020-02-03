@@ -1,5 +1,3 @@
 import { InMemoryStorage } from './InMemoryStorage';
 
-export class PostgresStorage<T> extends InMemoryStorage<T> {
-
-}
+export class PostgresStorage<T> extends InMemoryStorage<T> {}

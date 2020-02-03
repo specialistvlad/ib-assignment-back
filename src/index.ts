@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import { join } from 'path';
 import bodyParser from 'body-parser';
 
-import { define404 } from './module/base/router';
+import { define404 } from './core/router';
 
 import { router } from './router';
 

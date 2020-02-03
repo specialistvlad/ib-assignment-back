@@ -6,6 +6,16 @@ type TSession = {
   token: string,
 }
 
-class UserDal<T> extends RedisStorage<T> {}
+class SessionDal<T> extends RedisStorage<T> {
+  constructor(entityName: string) {
+    super(entityName);
+    // @ts-ignore
+    this.storage = [{
+      email: 'xyz2',
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ4eXoyIiwiaWF0IjoxNTgwNzI2MjMwfQ.IbH4bzNZVC1qEwbI7maJCN2gEM5RwPBBXZUvEJriZH8',
+    }];
+  }
+  
+}
 
-export default new UserDal<TSession>('session');
+export default new SessionDal<TSession>('session');

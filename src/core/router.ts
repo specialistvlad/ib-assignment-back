@@ -8,9 +8,9 @@ export const fieldError = (field: string, description: string) => ({
   description,
 });
 
-export const resultSuccess = (id: string) => ({
+export const resultSuccess = (obj: any) => ({
   result: 'ok',
-  id,
+  ...obj,
 });
 
 export const noRouteMatch = () => ({
