@@ -17,6 +17,10 @@ export const noRouteMatch = () => ({
   result: 'no route match',
 });
 
+export const userNotFound = () => ({
+  result: 'User not found',
+});
+
 export const define404 = (app: Express | Router) => {
   // @ts-ignore
   app.use('*', function(req: Request, res: Response) {

@@ -4,12 +4,12 @@ import userDal from './dal';
 
 export const create = async (req: Request, res: Response) => {
   
-  const email: string = req.body?.email;
+  const email: string = req.body?.email.trim();
   if (!email) {
     return res.status(400).json(fieldError('email', 'Incorrect email'));
   }
   
-  const password: string = req.body?.email;
+  const password: string = req.body?.password.trim();
   if (!password) {
     return res.status(400).json(fieldError('password', 'Please provide password'));
   }

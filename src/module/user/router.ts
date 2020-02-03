@@ -6,7 +6,7 @@ import { create as createUser } from './controller';
 export const router = Router(defaultRouterOptions);
 
 /**
- * @api {get} /api/v1/user Create user aka signup
+ * @api {post} /api/v1/user Create user aka signup
  * @apiName CreateUser
  * @apiGroup User
  *

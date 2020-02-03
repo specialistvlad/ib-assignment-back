@@ -6,10 +6,6 @@ type TUser = {
   password: string,
 }
 
-class UserDal<T> extends PostgresStorage<T> {
-  // constructor() {
-  //   super();
-  // }
-}
+class UserDal<T> extends PostgresStorage<T> {}
 
 export default new UserDal<TUser>('user');
