@@ -1,0 +1,27 @@
+{
+  "name": "ib-assignment-back",
+  "version": "1.0.0",
+  "description": "auth server",
+  "main": "src",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/index.ts"
+  },
+  "author": "Vladyslav Kazantsev",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.25",
+    "@types/nanoid": "^2.1.0",
+    "@types/node": "^13.1.6",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "ts-jest": "^24.3.0",
+    "ts-node": "^8.6.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nanoid": "^2.1.11"
+  }
+}
