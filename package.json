@@ -4,7 +4,11 @@
   "description": "auth server",
   "main": "src",
   "scripts": {
-    "start": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/index.ts"
+    "start": "yarn dev-doc & yarn dev-server",
+    "serve": "yarn build-doc & yarn ts-node src/index.ts",
+    "build-doc": "apidoc -i src/ -o src/static/apidoc/",
+    "dev-server": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/index.ts",
+    "dev-doc": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'apidoc -i src/ -o src/static/apidoc/'"
   },
   "author": "Vladyslav Kazantsev",
   "license": "ISC",
@@ -13,6 +17,7 @@
     "@types/jest": "^24.0.25",
     "@types/nanoid": "^2.1.0",
     "@types/node": "^13.1.6",
+    "apidoc": "^0.20.0",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "ts-jest": "^24.3.0",
