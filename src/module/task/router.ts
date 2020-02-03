@@ -11,6 +11,7 @@ export const router = Router(defaultRouterOptions);
  * @apiGroup Task
  *
  * @apiParam {Number} userId User id.
+ * @apiParam {String} title Title of task.
  * @apiParam {String} description Description of task.
  *
  * @apiSuccess {Number} id Task unique ID.
