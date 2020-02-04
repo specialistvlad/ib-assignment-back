@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import { defaultRouterOptions, define404 } from '../../core/router';
+import { jwtAuthentication } from '../session/controller';
 import {
   create as createTask,
   getById as getTaskById,
@@ -22,7 +23,7 @@ export const router = Router(defaultRouterOptions);
  *
  * @apiSuccess {Number} id Task unique ID.
  */
-router.post('/', createTask);
+router.post('/', jwtAuthentication(), createTask);
 
 /**
  * @api {get} /api/v1/task/:taskId Get task
@@ -31,10 +32,10 @@ router.post('/', createTask);
  *
  * @apiParam {Number} taskId Task id.
  * @apiExample {curl} Example usage:
- *  curl --header "Content-Type: application/json" -i http://localhost:3001/api/v1/task/0
+ *  curl -H "Content-Type: application/json" -H "Authorization: Bearer <jwt token>" -i http://localhost:3001/api/v1/task/0
  * @apiSuccess {Number} id Task unique ID.
  */
-router.get('/:taskId', getTaskById);
+router.get('/:taskId', jwtAuthentication(), getTaskById);
 
 /**
  * @api {list} /api/v1/task/ List tasks
@@ -43,12 +44,12 @@ router.get('/:taskId', getTaskById);
  * @apiDescription Show sorted list of all tasks
  *
  * @apiExample {curl} Example usage:
- *  curl --header "Content-Type: application/json" -i http://localhost:3001/api/v1/task/?sorting=desc&page=0
+ *  curl -H "Content-Type: application/json" -H "Authorization: Bearer <jwt token>" -i http://localhost:3001/api/v1/task/?sorting=desc&page=0
  * @apiParam (queryParams) {String="asc","desc"} sorting Set sorting direction
  * @apiParam (queryParams) {Number} page Set page
  *
  */
-router.get('/', list);
+router.get('/', jwtAuthentication(), list);
 
 /**
  * @api {PUT} /api/v1/task/:taskId Update task
@@ -61,9 +62,9 @@ router.get('/', list);
  *
  * @apiSuccess {Number} id Task unique ID.
  * @apiExample {curl} Example usage:
- *  curl --header "Content-Type: application/json" -X PUT --data '{"userId":"0","title":"title", "description": "new description"}' -i http://localhost:3001/api/v1/task/0
+ *  curl -H "Content-Type: application/json" -H "Authorization: Bearer <jwt token>" -X PUT --data '{"userId":"0","title":"title", "description": "new description"}' -i http://localhost:3001/api/v1/task/0
  */
-router.put('/:taskId', updateTaskById);
+router.put('/:taskId', jwtAuthentication(), updateTaskById);
 
 /**
  * @api {delete} /api/v1/task/:taskId Remove task
@@ -71,12 +72,12 @@ router.put('/:taskId', updateTaskById);
  * @apiGroup Task
  *
  * @apiExample {curl} Example usage:
- *   curl --header "Content-Type: application/json" -X DELETE -i http://localhost:3001/api/v1/task/0
+ *   curl -H "Content-Type: application/json" -H "Authorization: Bearer <jwt token>" -X DELETE -i http://localhost:3001/api/v1/task/0
  * @apiParam {Number} taskId Task id.
  *
  * @apiSuccess {Number} id Task unique ID.
  */
-router.delete('/:taskId', removeTask);
+router.delete('/:taskId', jwtAuthentication(), removeTask);
 
 define404(router);
 

@@ -7,5 +7,5 @@ type TUser = {
 }
 
 class UserDal<T> extends PostgresStorage<T> {}
-const example = [{ email: 'xyz2', password: 'xyz2'}];
+const example = [{ email: 'xyz@test.com', password: 'xyz2'}];
 export default new UserDal<TUser>('user', example);

@@ -13,6 +13,9 @@ export const router = Router(defaultRouterOptions);
  * @apiParam {String} email Users unique email.
  * @apiParam {String} password Users unique password.
  *
+ * @apiExample {curl} Example usage:
+ * curl --header "Content-Type: application/json" --data '{"email":"xyz@test.com","password":"xyz"}' -i http://localhost:3001/api/v1/user/
+ * 
  * @apiSuccess {Number} id Users unique ID.
  */
 router.post('/', createUser);

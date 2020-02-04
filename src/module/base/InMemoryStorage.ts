@@ -3,7 +3,6 @@
 /***************************************************/
 
 type Id = string | number;
-// type IdOrNull = Id | null;
 
 export class InMemoryStorage<T> {
   protected entityName: string;
@@ -24,7 +23,6 @@ export class InMemoryStorage<T> {
   }
 
   async findOneById(value: Id):Promise<T | undefined> {
-    // return this.findOne('id', value as string);
     return this.storage[value as number];
   }
 
@@ -36,8 +34,6 @@ export class InMemoryStorage<T> {
   }
 
   async removeById(value: Id):Promise<Id> {
-    // return this.findOne('id', value as string);
-    // @ts-ignore
     this.storage = this.storage.filter((val, index) => index === value as number);
     return value;
   }
