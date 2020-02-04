@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import expressJwt from 'express-jwt';
 
 import { fieldError, resultSuccess, userNotFound } from '../../core/router';
 import userDal from '../user/dal';
@@ -34,18 +33,16 @@ export const create = async (req: Request, res: Response) => {
   return res.json(resultSuccess({ token }));
 };
 
-export const jwtAuthentication = () => {
-  return (req: Request, res: Response, next: Function) => {
-    const token = req.headers.authorization?.split(' ') || [];
-    
-    jwt.verify(token[1], secret, e => {
-      if (!e) {
-        return next();
-      }
-      return res.status(401).json({
-        result: e.toString(),
-      });
+export const jwtAuthentication = (req: Request, res: Response, next: Function) => {
+  const token = req.headers.authorization?.split(' ') || [];
+  
+  jwt.verify(token[1], secret, e => {
+    if (!e) {
+      return next();
+    }
+    return res.status(401).json({
+      result: e.toString(),
     });
-  };
-}
+  });
+};
 
