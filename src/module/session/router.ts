@@ -13,7 +13,7 @@ export const router = Router(defaultRouterOptions);
  * @apiParam {String} email User email.
  * @apiParam {String} password User password.
  *
- * @apiSuccess {string} jwt token.
+ * @apiSuccess {string} token jwt token.
  */
 router.post('/', createSession);
 

@@ -6,12 +6,6 @@ type TUser = {
   password: string,
 }
 
-class UserDal<T> extends PostgresStorage<T> {
-  constructor(entityName: string) {
-    super(entityName);
-    // @ts-ignore
-    this.storage = [{ email: 'xyz2', password: 'xyz2'}];
-  }
-}
-
-export default new UserDal<TUser>('user');
+class UserDal<T> extends PostgresStorage<T> {}
+const example = [{ email: 'xyz2', password: 'xyz2'}];
+export default new UserDal<TUser>('user', example);

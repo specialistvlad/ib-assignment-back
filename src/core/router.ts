@@ -27,3 +27,9 @@ export const define404 = (app: Express | Router) => {
     res.status(404).json(noRouteMatch());
   });
 }
+
+export const queryParamError = (field: string, description: string) => ({
+  result: 'queryParamError',
+  field,
+  description,
+});

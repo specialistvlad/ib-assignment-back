@@ -1,3 +1,7 @@
+/***************************************************/
+//  THIS IS MOCK STORAGE, USE IT ON YOUR OWN RISK
+/***************************************************/
+
 type Id = string | number;
 // type IdOrNull = Id | null;
 
@@ -5,12 +9,12 @@ export class InMemoryStorage<T> {
   protected entityName: string;
   protected storage: Array<T>;
 
-  constructor(entityName: string) {
+  constructor(entityName: string, example: Array<T>=[]) {
     this.entityName = entityName;
-    this.storage = [];
+    this.storage = example;
   }
 
-  async insert(data: T): Promise<string> {
+  async insert(data: T): Promise<Id> {
     this.storage = [...this.storage, data];
     return (this.storage.length - 1).toString();
   }
@@ -22,5 +26,19 @@ export class InMemoryStorage<T> {
   async findOneById(value: Id):Promise<T | undefined> {
     // return this.findOne('id', value as string);
     return this.storage[value as number];
+  }
+
+  async updateOneById(taskId: Id, value: T):Promise<Id> {
+    const tmp = [...this.storage];
+    tmp[taskId as number] = value;
+    this.storage = tmp;
+    return taskId;
+  }
+
+  async removeById(value: Id):Promise<Id> {
+    // return this.findOne('id', value as string);
+    // @ts-ignore
+    this.storage = this.storage.filter((val, index) => index === value as number);
+    return value;
   }
 }
